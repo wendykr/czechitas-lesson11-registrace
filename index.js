@@ -45,7 +45,7 @@ const process = (event) => {
 
 regFormElm.addEventListener('submit', process);
 
-const validator = () => {
+const validator = (event) => {
 	if (pass1Elm.value === '') {
 		errorElm.textContent = 'Vytvořte heslo.';
 	} else if (pass1Elm.value.length < 10 || (!pass1Elm.value.includes('-') && !pass1Elm.value.includes('_') && !pass1Elm.value.includes(':'))) {
@@ -60,19 +60,19 @@ const validator = () => {
 		errorElm.style.color = 'green';
 		errorElm.textContent = 'Heslo je dostatečně bezpečné.';
     }
-    console.log(pass1Elm.value);
+    console.log(event.target.value);
 }
 
 pass1Elm.addEventListener('input', validator);
 
-const conformity = () => {
+const conformity = (event) => {
     if (pass2Elm.value === '' || (pass2Elm.value !== pass1Elm.value)) {
 		errorElm.textContent = 'Zadaná hesla se neshodují.';
         console.log('KO');
     } else {
 		errorElm.textContent = ' ';
 	}
-    console.log(pass2Elm.value);
+    console.log(event.target.value);
 }
 
 pass2Elm.addEventListener('input', conformity);
